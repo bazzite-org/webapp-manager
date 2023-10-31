@@ -105,4 +105,3 @@ Type=Application
 Encoding=UTF-8
 Categories=Application;Network;
 StartupNotify=false
-NotShowIn=KDE;
