@@ -202,6 +202,8 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_WATERFOX_FLATPAK, "Waterfox (Flatpak)", ".local/share/flatpak/exports/bin/net.waterfox.waterfox", ".local/share/flatpak/exports/bin/net.waterfox.waterfox"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi", "vivaldi-stable", "/usr/bin/vivaldi-stable"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi Snapshot", "vivaldi-snapshot", "/usr/bin/vivaldi-snapshot"),
+                Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi (Flatpak)", "/var/lib/flatpak/exports/bin/com.vivaldi.Vivaldi", "/var/lib/flatpak/exports/bin/com.vivaldi.Vivaldi"),
+                Browser(BROWSER_TYPE_CHROMIUM, "Vivaldi (Flatpak)", ".local/share/flatpak/exports/bin/com.vivaldi.Vivaldi", ".local/share/flatpak/exports/bin/com.vivaldi.Vivaldi"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Microsoft Edge", "microsoft-edge-stable", "/usr/bin/microsoft-edge-stable"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Microsoft Edge Beta", "microsoft-edge-beta", "/usr/bin/microsoft-edge-beta"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Microsoft Edge Dev", "microsoft-edge-dev", "/usr/bin/microsoft-edge-dev"),
@@ -306,6 +308,7 @@ class WebAppManager:
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
             exec_string = ("sh -c 'XAPP_FORCE_GTKWINDOW_ICON=\"" + icon + "\" " + browser.exec_path +
                            " --class WebApp-" + codename +
+                           " --name WebApp-" + codename +
                            " --profile " + firefox_profile_path +
                            " --no-remote")
             if privatewindow:
@@ -336,11 +339,13 @@ class WebAppManager:
                 exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
                                " --class=WebApp-" + codename +
+                               " --name=WebApp-" + codename +
                                " --user-data-dir=" + profile_path)
             else:
                 exec_string = (browser.exec_path +
                                " --app=" + "\"" + url + "\"" +
-                               " --class=WebApp-" + codename)
+                               " --class=WebApp-" + codename +
+                               " --name=WebApp-" + codename)
 
             if privatewindow:
                 if browser.name == "Microsoft Edge":
