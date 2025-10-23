@@ -1,27 +1,28 @@
-# Greek translation for linuxmint
-# Copyright (c) 2020 Rosetta Contributors and Canonical Ltd 2020
+# Georgian translation for linuxmint
+# Copyright (c) 2025 Rosetta Contributors and Canonical Ltd 2025
 # This file is distributed under the same license as the linuxmint package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: linuxmint\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2025-07-25 15:09+0200\n"
-"PO-Revision-Date: 2023-05-09 06:17+0000\n"
-"Last-Translator: Ourania Banti <Unknown>\n"
-"Language-Team: Greek <el@li.org>\n"
+"PO-Revision-Date: 2025-06-15 07:06+0000\n"
+"Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2025-08-26 15:25+0000\n"
 "X-Generator: Launchpad (build 919009172d854f2b8e4e8262db447f12f11d25eb)\n"
+"Language: ka\n"
 
 #: usr/lib/webapp-manager/common.py:111 usr/lib/webapp-manager/common.py:271
 #: usr/lib/webapp-manager/common.py:442
 #: usr/share/webapp-manager/webapp-manager.ui.h:22
 msgid "Web App"
-msgstr "Εφαρμογή ιστού"
+msgstr "ვებ აპლიკაცია"
 
 #: usr/lib/webapp-manager/webapp-manager.py:75
 #: usr/lib/webapp-manager/webapp-manager.py:232
@@ -29,144 +30,144 @@ msgstr "Εφαρμογή ιστού"
 #: generate_desktop_files:39 usr/share/webapp-manager/webapp-manager.ui.h:23
 #: usr/share/webapp-manager/shortcuts.ui.h:1
 msgid "Web Apps"
-msgstr "Εφαρμογές ιστού"
+msgstr "ვებ აპები"
 
 #: usr/lib/webapp-manager/webapp-manager.py:130
 msgid "Keyboard Shortcuts"
-msgstr "Συντομεύσεις Πληκτρολογίου"
+msgstr "კლავიატურის მალსახმობები"
 
 #: usr/lib/webapp-manager/webapp-manager.py:137
 #: usr/lib/webapp-manager/webapp-manager.py:238
 #: usr/share/webapp-manager/shortcuts.ui.h:8
 msgid "About"
-msgstr "Περί"
+msgstr "შესახებ"
 
 #: usr/lib/webapp-manager/webapp-manager.py:142
 #: usr/share/webapp-manager/shortcuts.ui.h:10
 msgid "Quit"
-msgstr "Έξοδος"
+msgstr "გასვლა"
 
 #: usr/lib/webapp-manager/webapp-manager.py:157
 msgid "Icon"
-msgstr "Εικονίδιο"
+msgstr "ხატულა"
 
 #: usr/lib/webapp-manager/webapp-manager.py:161
 msgid "Name"
-msgstr "Όνομα"
+msgstr "სახელი"
 
 #: usr/lib/webapp-manager/webapp-manager.py:166
 msgid "Browser"
-msgstr "Φυλλομετρητής"
+msgstr "ბრაუზერი"
 
 #: usr/lib/webapp-manager/webapp-manager.py:180 generate_desktop_files:48
 msgid "Web"
-msgstr "Ιστός"
+msgstr "ვები"
 
 #: usr/lib/webapp-manager/webapp-manager.py:181
 msgid "Internet"
-msgstr "Διαδίκτυο"
+msgstr "ინერნეტი"
 
 #: usr/lib/webapp-manager/webapp-manager.py:182
 msgid "Accessories"
-msgstr "Βοηθήματα"
+msgstr "აქსესუარები"
 
 #: usr/lib/webapp-manager/webapp-manager.py:183
 msgid "Games"
-msgstr "Παιχνίδια"
+msgstr "თამაშები"
 
 #: usr/lib/webapp-manager/webapp-manager.py:184
 msgid "Graphics"
-msgstr "Γραφικά"
+msgstr "გრაფიკა"
 
 #: usr/lib/webapp-manager/webapp-manager.py:185
 msgid "Office"
-msgstr "Γραφείο"
+msgstr "ოფისი"
 
 #: usr/lib/webapp-manager/webapp-manager.py:186
 msgid "Sound & Video"
-msgstr "Ήχος και βίντεο"
+msgstr "ხმა და ვიდეო"
 
 #: usr/lib/webapp-manager/webapp-manager.py:187
 msgid "Programming"
-msgstr "Προγραμματισμός"
+msgstr "პროგრამირება"
 
 #: usr/lib/webapp-manager/webapp-manager.py:188
 msgid "Education"
-msgstr "Εκπαίδευση"
+msgstr "განათლება"
 
 #: usr/lib/webapp-manager/webapp-manager.py:210
 msgid "No supported browsers were detected."
-msgstr "Δεν εντοπίστηκαν υποστηριζόμενοι φυλλομετρητές."
+msgstr "მხარდაჭერილი ბრაუზერები აღმოჩენილი არაა."
 
 #: usr/lib/webapp-manager/webapp-manager.py:240
 #: usr/lib/webapp-manager/webapp-manager.py:542 generate_desktop_files:25
 #: generate_desktop_files:39
 msgid "Run websites as if they were apps"
-msgstr "Τρέξτε ιστοσελίδες σαν να ήταν εφαρμογές"
+msgstr "ვებსაიტების გაშვება აპების სახით"
 
 #: usr/lib/webapp-manager/webapp-manager.py:291
 #, python-format
 msgid "Delete '%s'"
-msgstr "Διαγραφή του '%s'"
+msgstr "\"%s\"-ის წაშლა"
 
 #: usr/lib/webapp-manager/webapp-manager.py:292
 #, python-format
 msgid "Are you sure you want to delete '%s'?"
-msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε το '%s'?"
+msgstr "დარწმუნებული ბრძანდებით, რომ გნებავთ '%s'-ის წაშლა?"
 
 #: usr/lib/webapp-manager/webapp-manager.py:293
 msgid "This Web App will be permanently lost."
-msgstr "Αυτή η εφαρμογή ιστού θα χαθεί μόνιμα"
+msgstr "ეს ვეპაპი სამუდამოდ დაიკარგება."
 
 #: usr/lib/webapp-manager/webapp-manager.py:349
 #: usr/lib/webapp-manager/webapp-manager.py:392
 #: usr/lib/webapp-manager/webapp-manager.py:448
 msgid "Add a New Web App"
-msgstr "Προσθήκη νέας εφαρμογής ιστού"
+msgstr "ახალი ვებაპის დამატება"
 
 #: usr/lib/webapp-manager/webapp-manager.py:382
 msgid "Edit Web App"
-msgstr "Επεξεργασία εφαρμογής ιστού"
+msgstr "ვებაპის ჩასწორება"
 
 #: usr/lib/webapp-manager/webapp-manager.py:424
 msgid "Choose an icon"
-msgstr "Επιλογή εικονιδίου"
+msgstr "აირჩიეთ ხატულა"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:1
 #: usr/share/webapp-manager/shortcuts.ui.h:2
 msgid "Add"
-msgstr "Προσθήκη"
+msgstr "დამატება"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:2
 #: usr/share/webapp-manager/shortcuts.ui.h:4
 msgid "Remove"
-msgstr "Κατάργηση"
+msgstr "წაშლა"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:3
 #: usr/share/webapp-manager/shortcuts.ui.h:3
 msgid "Edit"
-msgstr "Επεξεργασία"
+msgstr "ჩასწორება"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:4
 #: usr/share/webapp-manager/shortcuts.ui.h:5
 msgid "Launch"
-msgstr "Εκκίνηση"
+msgstr "გაშვება"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:5
 msgid "Name:"
-msgstr "Όνομα:"
+msgstr "სახელი:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:6
 msgid "Address:"
-msgstr "Διεύθυνση:"
+msgstr "მისამართი:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:7
 msgid "Icon:"
-msgstr "Εικονίδιο:"
+msgstr "ხატულა:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:8
 msgid "Website name"
-msgstr "Όνομα ιστοσελίδας"
+msgstr "საიტის სახელი"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:9
 msgid "https://www.website.com"
@@ -174,50 +175,48 @@ msgstr "https://www.website.com"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:10
 msgid "Cancel"
-msgstr "Ακύρωση"
+msgstr "გაუქმება"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:11
 msgid "OK"
-msgstr "ΟΚ"
+msgstr "დიახ"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:12
 msgid "Find icons online"
-msgstr "Βρείτε εικονίδια στο διαδίκτυο"
+msgstr "ხატულების პოვნა ინტერნეტში"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:13
 msgid "Category:"
-msgstr "Κατηγορία:"
+msgstr "კატეგორია:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:14
 msgid "Browser:"
-msgstr "Φυλλομετρητής:"
+msgstr "ბრაუზერი:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:15
 msgid ""
 "If this option is enabled the website will run with its own browser profile."
-msgstr ""
-"Αν ενεργοποιηθεί αυτή η ρύθμιση τότε η ιστοσελίδα θα τρέχει με το δικό της "
-"προφίλ φυλλομετρητή."
+msgstr "როცა ეს ჩართულია, ვებსაიტი თავისი ბრაუზერის პროფილით გაეშვება."
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:16
 msgid "Isolated profile:"
-msgstr "Απομονωμένο προφίλ:"
+msgstr "იზოლირებული პროფილი:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:17
 msgid "Navigation bar:"
-msgstr "Μπάρα πλοήγησης:"
+msgstr "ნავიგაციის პანელი:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:18
 msgid "Private/Incognito Window:"
-msgstr "Ιδιωτικό/Ανώνυμο Παράθυρο:"
+msgstr "კონფიდენციალური/ინკოგნიტო ფანჯარა:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:19
 msgid "Custom parameters:"
-msgstr "Προσαρμοσμένες παράμετροι"
+msgstr "მორგებული პარამეტრები:"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:20
 msgid "Custom browser parameters"
-msgstr "Προσαρμοσμένες παράμετροι φυλλομετρητή"
+msgstr "ბრაუზერის მორგებული პარამეტრები"
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:21
 msgid "Description:"
@@ -225,16 +224,16 @@ msgstr ""
 
 #: usr/share/webapp-manager/webapp-manager.ui.h:24
 msgid "Manage your Web Apps"
-msgstr "Διαχειριστείτε τις εφαρμογές ιστού"
+msgstr "მართეთ თქვენი ვებაპები"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:6
 msgid "Other Shortcuts"
-msgstr "Άλλες συντομεύσεις"
+msgstr "სხვა მალსახმობები"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:7
 msgid "Go Back"
-msgstr "Επιστροφή"
+msgstr "უკან დაბრუნება"
 
 #: usr/share/webapp-manager/shortcuts.ui.h:9
 msgid "Shortcuts"
-msgstr "Συντομεύσεις"
+msgstr "მალსახმობები"

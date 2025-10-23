@@ -60,8 +60,9 @@ WATERFOX_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/net.waterfox.wate
 FLOORP_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/one.ablaze.floorp/data")
 EPIPHANY_PROFILES_DIR = os.path.join(ICE_DIR, "epiphany")
 FALKON_PROFILES_DIR = os.path.join(ICE_DIR, "falkon")
+ZEN_FLATPAK_PROFILES_DIR = os.path.expanduser("~/.var/app/app.zen_browser.zen/data/ice/zen/")
 ICONS_DIR = os.path.join(ICE_DIR, "icons")
-BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_FLOORP_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON = range(9)
+BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_LIBREWOLF_FLATPAK, BROWSER_TYPE_WATERFOX_FLATPAK, BROWSER_TYPE_FLOORP_FLATPAK, BROWSER_TYPE_CHROMIUM, BROWSER_TYPE_EPIPHANY, BROWSER_TYPE_FALKON, BROWSER_TYPE_ZEN_FLATPAK = range(10)
 
 class Browser:
 
@@ -80,6 +81,7 @@ class WebAppLauncher:
         self.codename = codename
         self.web_browser = None
         self.name = None
+        self.desc = None
         self.icon = None
         self.is_valid = False
         self.exec = None
@@ -102,6 +104,12 @@ class WebAppLauncher:
 
                 if "Name=" in line:
                     self.name = line.replace("Name=", "")
+                    continue
+
+                if "Comment=" in line:
+                    self.desc = line.replace("Comment=", "")
+                    if self.desc == _("Web App"):
+                        self.desc = ""
                     continue
 
                 if "Icon=" in line:
@@ -179,6 +187,8 @@ class WebAppManager:
                 Browser(BROWSER_TYPE_FIREFOX, "Firefox Extended Support Release", "firefox-esr", "/usr/bin/firefox-esr"),
                 Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", "/var/lib/flatpak/exports/bin/org.mozilla.firefox", "/var/lib/flatpak/exports/bin/org.mozilla.firefox"),
                 Browser(BROWSER_TYPE_FIREFOX_FLATPAK, "Firefox (Flatpak)", ".local/share/flatpak/exports/bin/org.mozilla.firefox", ".local/share/flatpak/exports/bin/org.mozilla.firefox"),
+                Browser(BROWSER_TYPE_ZEN_FLATPAK, "Zen (Flatpak)", "/var/lib/flatpak/exports/bin/app.zen_browser.zen", "/var/lib/flatpak/exports/bin/app.zen_browser.zen"),
+                Browser(BROWSER_TYPE_ZEN_FLATPAK, "Zen (Flatpak)", ".local/share/flatpak/exports/bin/app.zen_browser.zen", ".local/share/flatpak/exports/bin/app.zen_browser.zen"),
                 Browser(BROWSER_TYPE_FIREFOX_SNAP, "Firefox (Snap)", "/snap/bin/firefox", "/snap/bin/firefox"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave", "brave", "/usr/bin/brave"),
                 Browser(BROWSER_TYPE_CHROMIUM, "Brave Browser", "brave-browser", "/usr/bin/brave-browser"),
@@ -236,6 +246,7 @@ class WebAppManager:
     def delete_webbapp(self, webapp):
         shutil.rmtree(os.path.join(FIREFOX_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(FIREFOX_FLATPAK_PROFILES_DIR, webapp.codename), ignore_errors=True)
+        shutil.rmtree(os.path.join(ZEN_FLATPAK_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(FIREFOX_SNAP_PROFILES_DIR, webapp.codename), ignore_errors=True)
         shutil.rmtree(os.path.join(PROFILES_DIR, webapp.codename), ignore_errors=True)
         # first remove symlinks then others
@@ -250,17 +261,20 @@ class WebAppManager:
             os.remove(falkon_orig_prof_dir)
         shutil.rmtree(os.path.join(FALKON_PROFILES_DIR, webapp.codename), ignore_errors=True)
 
-    def create_webapp(self, name, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
+    def create_webapp(self, name, desc, url, icon, category, browser, custom_parameters, isolate_profile=True, navbar=False, privatewindow=False):
         # Generate a 4 digit random code (to prevent name collisions, so we can define multiple launchers with the same name)
         random_code =  ''.join(choice(string.digits) for _ in range(4))
         codename = "".join(filter(str.isalpha, name)) + random_code
         path = os.path.join(APPS_DIR, "WebApp-%s.desktop" % codename)
 
+        if not desc:
+            desc = _("Web App")
+
         with open(path, 'w') as desktop_file:
             desktop_file.write("[Desktop Entry]\n")
             desktop_file.write("Version=1.0\n")
             desktop_file.write("Name=%s\n" % name)
-            desktop_file.write("Comment=%s\n" % _("Web App"))
+            desktop_file.write("Comment=%s\n" % desc)
 
             exec_string = self.get_exec_string(browser, codename, custom_parameters, icon, isolate_profile, navbar,
                                                privatewindow, url)
@@ -305,12 +319,14 @@ class WebAppManager:
 
 
     def get_exec_string(self, browser, codename, custom_parameters, icon, isolate_profile, navbar, privatewindow, url):
-        if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP]:
+        if browser.browser_type in [BROWSER_TYPE_FIREFOX, BROWSER_TYPE_FIREFOX_FLATPAK, BROWSER_TYPE_FIREFOX_SNAP, BROWSER_TYPE_ZEN_FLATPAK]:
             # Firefox based
             if browser.browser_type == BROWSER_TYPE_FIREFOX:
                 firefox_profiles_dir = FIREFOX_PROFILES_DIR
             elif browser.browser_type == BROWSER_TYPE_FIREFOX_FLATPAK:
                 firefox_profiles_dir = FIREFOX_FLATPAK_PROFILES_DIR
+            elif browser.browser_type == BROWSER_TYPE_ZEN_FLATPAK:
+                firefox_profiles_dir = ZEN_FLATPAK_PROFILES_DIR
             else:
                 firefox_profiles_dir = FIREFOX_SNAP_PROFILES_DIR
             firefox_profile_path = os.path.join(firefox_profiles_dir, codename)
@@ -421,13 +437,16 @@ class WebAppManager:
 
         return exec_string
 
-    def edit_webapp(self, path, name, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+    def edit_webapp(self, path, name, desc, browser, url, icon, category, custom_parameters, codename, isolate_profile, navbar, privatewindow):
+        if not desc:
+            desc = _("Web App")
+
         config = configparser.RawConfigParser()
         config.optionxform = str
         config.read(path)
         config.set("Desktop Entry", "Name", name)
         config.set("Desktop Entry", "Icon", icon)
-        config.set("Desktop Entry", "Comment", _("Web App"))
+        config.set("Desktop Entry", "Comment", desc)
         config.set("Desktop Entry", "Categories", "GTK;%s;" % category)
 
         try:
@@ -479,14 +498,14 @@ def download_image(root_url: str, link: str) -> Optional[PIL.Image.Image]:
         print(link)
         return None
 
-def _find_link_favicon(soup, iconformat):
+def _find_link_favicon(soup, iconformat, url):
     items = soup.find_all("link", {"rel": iconformat})
     for item in items:
         link = item.get("href")
         if link:
             yield link
 
-def _find_meta_content(soup, iconformat):
+def _find_meta_content(soup, iconformat, url):
     item = soup.find("meta", {"name": iconformat})
     if not item:
         return
@@ -494,15 +513,22 @@ def _find_meta_content(soup, iconformat):
     if link:
         yield link
 
-def _find_property(soup, iconformat):
+def _find_property(soup, iconformat, url):
     items = soup.find_all("meta", {"property": iconformat})
     for item in items:
         link = item.get("content")
         if link:
             yield link
 
-def _find_url(_soup, iconformat):
+def _find_url(_soup, iconformat, url):
     yield iconformat
+
+def _find_google_api_favicon(_soup, iconformat, url):
+    url = urllib.parse.quote(url, safe='')
+    #response = requests.get("https://www.google.com/s2/favicons?sz=32&domain=%s" % url, timeout=3)
+    #link = response.url
+    link = "https://www.google.com/s2/favicons?sz=32&domain=%s" % url
+    yield link
 
 
 def download_favicon(url):
@@ -510,6 +536,7 @@ def download_favicon(url):
     url = normalize_url(url)
     (scheme, netloc, path, _, _, _) = urllib.parse.urlparse(url)
     root_url = "%s://%s" % (scheme, netloc)
+    api_url = "%s%s" % (netloc, path)
 
     # Check HTML and /favicon.ico
     try:
@@ -528,11 +555,12 @@ def download_favicon(url):
                 ("msapplication-square70x70logo", _find_meta_content),
                 ("og:image", _find_property),
                 ("favicon.ico", _find_url),
+                ("google-api", _find_google_api_favicon),
             ]
 
             # icons defined in the HTML
             for (iconformat, getter) in iconformats:
-                for link in getter(soup, iconformat):
+                for link in getter(soup, iconformat, api_url):
                     image = download_image(root_url, link)
                     if image is not None:
                         t = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
